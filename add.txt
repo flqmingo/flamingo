@@ -1,0 +1,90 @@
+            /* 放大后图片的样式 */
+        #enlargedImg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: auto;
+            z-index: 999;
+        }            
+            
+            
+            // // 为每个图片添加点击事件监听器
+            // for (var i = 0; i < aDiv.length; i++) {
+            //     (function (index) {
+            //         aDiv[index].addEventListener('click', function () {
+            //             if (isRotationPaused && enlargedImage) {
+            //                 // 如果已有图片放大，直接返回
+            //                 return;
+            //             }
+            //             if (isRotationPaused && this === enlargedImage) {
+            //                 // 恢复图片大小和旋转
+            //                 this.classList.add('transition');
+            //                 this.style.transform = originalTransforms[index];
+            //                 this.style.width = '130px';
+            //                 this.style.height = '200px';
+            //                 isRotationPaused = false;
+            //                 startAutoRotation();
+            //                 // 移除放大后的图片元素
+            //                 var enlargedImg = document.getElementById('enlargedImg');
+            //                 if (enlargedImg) {
+            //                     enlargedImg.parentNode.removeChild(enlargedImg);
+            //                 }
+            //                 enlargedImage = null;
+            //                 // 过渡结束后移除过渡类
+            //                 this.addEventListener('transitionend', function () {
+            //                     this.classList.remove('transition');
+            //                 }, { once: true });
+            //             } else {
+            //                 // 暂停旋转，放大图片
+            //                 cancelAnimationFrame(requestId);
+            //                 isRotationPaused = true;
+            //                 // 获取原图路径
+            //                 var imgIndex = currentGroup * 10 + index + 1;
+            //                 var imgSrc = `${isForTa? "secrets" : "images"}/${imgIndex}.jpg`;
+            //                 // 创建并添加放大后的图片
+            //                 var img = document.createElement('img');
+            //                 img.id = 'enlargedImg';
+            //                 img.src = imgSrc;
+            //                 document.body.appendChild(img);
+            //                 // 平滑放大图片
+            //                 setTimeout(() => {
+            //                     img.style.transform ='scale(1)';
+            //                 }, 10);
+            //                 originalTransforms[index] = this.style.transform;
+            //                 this.classList.add('transition');
+            //                 this.style.transform = 'translate3d(calc(50% - 600px), calc(50% - 200px), 0)';
+            //                 this.style.width = '600px';
+            //                 this.style.height = 'auto';
+            //                 enlargedImage = this;
+            //             }
+            //         });
+            //     })(i);
+            // }
+
+            // // 全局点击事件监听器，用于恢复图片
+            // document.addEventListener('click', function (e) {
+            //     if (isRotationPaused && e.target!== enlargedImage) {
+            //         // 恢复图片大小和旋转
+            //         if (enlargedImage) {
+            //             var index = Array.from(aDiv).indexOf(enlargedImage);
+            //             enlargedImage.classList.add('transition');
+            //             enlargedImage.style.transform = originalTransforms[index];
+            //             enlargedImage.style.width = '130px';
+            //             enlargedImage.style.height = '200px';
+            //             isRotationPaused = false;
+            //             startAutoRotation();
+            //             // 移除放大后的图片元素
+            //             var enlargedImg = document.getElementById('enlargedImg');
+            //             if (enlargedImg) {
+            //                 enlargedImg.parentNode.removeChild(enlargedImg);
+            //             }
+            //             enlargedImage = null;
+            //             // 过渡结束后移除过渡类
+            //             enlargedImage.addEventListener('transitionend', function () {
+            //                 this.classList.remove('transition');
+            //             }, { once: true });
+            //         }
+            //     }
+            // });

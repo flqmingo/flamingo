@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flamingo</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="box">
+        <!-- 动态生成的 div 会在这里 -->
+    </div>
+    <button id="prevBtn">&lt;</button>
+    <button id="nextBtn">&gt;</button>
+    <button id="forTaBtn">For Ta</button>
+    <!-- 添加两个音频元素 -->
+    <audio id="audioForTa" src="music/song2.mp3" loop hidden></audio>
+    <audio id="audioForMe" src="music/song1.mp3" loop hidden></audio>
+    <!-- 设置按钮 -->
+    <button id="settingsButton">
+        <img id="settingsIcon" src="support_image/setting.png" alt="设置图标">
+    </button>
+    <!-- 抽屉栏 -->
+    <div id="settingsDrawer">
+        <label for="volumeSlider">音量调节:</label>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+        <label for="numberSelector1">每组图片数量:</label>
+        <input type="number" id="numberSelector1" min="4" max="15" value="10">
+        <small class="suggestion-text">建议数值不小于6，不超过16</small>
+        <br>
+        <label for="numberSelector2">照片集 1 数量:</label>
+        <input type="number" id="numberSelector2" min="1" value="57">
+        <label for="numberSelector3">照片集 2 数量:</label>
+        <input type="number" id="numberSelector3" min="1" value="16">
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
