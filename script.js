@@ -20,6 +20,53 @@ var isRotatingClockwise = true;
 var numImagesPerGroup = 10; // 每组图片数量，默认为 10
 var totalImages = 57; // 照片集 1 数量，默认为 57
 var totalImagesSecret = 16; // 照片集 2 数量，默认为 16
+var numberSelector2 = document.getElementById('numberSelector2');
+var numberSelector3 = document.getElementById('numberSelector3');
+
+// 新添加的函数：获取图片数量
+// 新添加的函数：获取指定文件夹中的图片数量
+function getImageCount(folder) {
+    return new Promise((resolve) => {
+        let count = 0;
+        function tryLoadNextImage() {
+            const img = new Image();
+            img.src = `${folder}/${count + 1}.jpg`;
+            img.onload = () => {
+                count++;
+                tryLoadNextImage();
+            };
+            img.onerror = () => {
+                resolve(count);
+            };
+        }
+        tryLoadNextImage();
+    });
+}
+
+
+// 新添加的函数：更新图片数量到输入框
+async function updateImageCount() {
+    try {
+        let count1 = await getImageCount('images/');
+        let count2 = await getImageCount('secrets/');
+        document.getElementById('numberSelector2').value = count1;
+        document.getElementById('numberSelector3').value = count2;
+        totalImages = count1;
+        totalImagesSecret = count2;
+        numberSelector2.value = totalImages;
+        numberSelector3.value = totalImagesSecret;
+        console.log('图片数量更新成功');
+        console.log(numberSelector2.value);
+        console.log(numberSelector3.value);
+        updateTotalGroups();
+        updateTotalGroupsForSecret();
+        createDivs(numImagesPerGroup);
+        let aDiv = document.getElementById('box').getElementsByTagName('div');
+        showGroup(currentGroup, aDiv);
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 function init() {
     var obox = document.getElementById('box');
@@ -210,6 +257,9 @@ function init() {
         var aDiv = obox.getElementsByTagName('div');
         showGroup(currentGroup, aDiv);
     });
+
+    // 调用更新图片数量的函数
+    updateImageCount();
 }
 
 // 根据总图片数量和每组图片数量更新总组数
