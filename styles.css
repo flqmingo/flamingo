@@ -21,6 +21,7 @@ body {
     overflow: hidden;
 }
 
+/* 图片容器样式 */
 #box {
     position: relative;
     display: flex;
@@ -32,6 +33,7 @@ body {
     will-change: transform;
 }
 
+/* 图片样式 */
 #box>div {
     transform-style: preserve-3d;
     position: absolute;
@@ -54,26 +56,14 @@ body {
     transition: transform 0.5s ease-in-out;
 }
 
+/* 鼠标悬停时图片样式 */
 #box>div:hover {
     box-shadow: 0 0 20px rgb(199, 255, 253);
     transform: scale(1.3) rotateY(0deg) translate3d(0, 0, 350px);
     z-index: 1;
 }
 
-#box>div.fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    transform: scale(1);
-    transition: all 0.3s;
-}
-
+/* 图片容器背景样式 */
 #box p {
     position: absolute;
     left: 0;
@@ -83,11 +73,12 @@ body {
     margin: auto;
     width: 1200px;
     height: 1200px;
-    background: -webkit-radial-gradient(center center, 600px 600px, rgba(50, 50, 50, 1), rgba(0, 0, 0, 0));
+    background: -webkit-radial-gradient(center center, 600px 600px, rgb(0, 12, 50), rgba(0, 0, 0, 0));
     border-radius: 50%;
     transform: rotateX(90deg) translate3d(-600px, 0, -105px);
 }
 
+/* 按钮样式 */
 button {
     position: absolute;
     top: 50%;
@@ -102,18 +93,22 @@ button {
     border-radius: 30px;
 }
 
+/* 鼠标悬停时按钮样式 */
 button:hover {
     background-color: rgba(224, 224, 224, 0.8);
 }
 
+/* 上一张按钮样式 */
 #prevBtn {
     left: 20px;
 }
 
+/* 下一张按钮样式 */
 #nextBtn {
     right: 20px;
 }
 
+/* ForTa按钮样式 */
 #forTaBtn {
     top: 20px;
     right: 20px;
@@ -179,26 +174,35 @@ button:hover {
     transition: left 0.3s ease-in-out;
 }
 
+/* 打开抽屉栏时样式 */
 #settingsDrawer.open {
     left: 0;
 }
 
+/* 建议文本样式 */
 #settingsDrawer .suggestion-text {
     display: block;
-    margin-top: -15px; /* 可以根据需要调整间距 */
+    margin-top: -15px;
     color: #ff7474;
 }
 
 /* 数字选择器样式 */
 input[type="number"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 5px;
+    margin-bottom: 10px;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
 /* 音量调节滑块样式 */
 #volumeSlider {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+/* 旋转速度调节滑块样式 */
+#rotationSpeedSlider {
+    width: 100%;
+    margin-bottom: 10px;
 }

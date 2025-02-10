@@ -20,11 +20,11 @@ var isRotatingClockwise = true;
 var numImagesPerGroup = 10; // 每组图片数量，默认为 10
 var totalImages = 0; // 照片集 1 数量
 var totalImagesSecret = 0; // 照片集 2 数量
+var rotationSpeedSlider = document.getElementById('rotationSpeedSlider');
 var numberSelector2 = document.getElementById('numberSelector2');
 var numberSelector3 = document.getElementById('numberSelector3');
 
-// 新添加的函数：获取图片数量
-// 新添加的函数：获取指定文件夹中的图片数量
+// 获取指定文件夹中的图片数量
 function getImageCount(folder) {
     return new Promise((resolve) => {
         let count = 0;
@@ -44,7 +44,7 @@ function getImageCount(folder) {
 }
 
 
-// 新添加的函数：更新图片数量到输入框
+// 更新图片数量到输入框
 async function updateImageCount() {
     try {
         let count1 = await getImageCount('images/');
@@ -209,11 +209,14 @@ function init() {
     // 音量调节功能
     volumeSlider.addEventListener('input', function () {
         var volume = parseFloat(this.value);
-        if (isForTa) {
-            audioForTa.volume = volume;
-        } else {
-            audioForMe.volume = volume;
-        }
+        audioForTa.volume = volume;
+        audioForMe.volume = volume;
+    });
+
+    // 监听旋转速度滑块的 input 事件
+    rotationSpeedSlider.addEventListener('input', function () {
+        rotationSpeed = parseFloat(this.value);
+        console.log('旋转速度已更新为: ', rotationSpeed);
     });
 
     // 设置按钮点击事件
