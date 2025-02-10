@@ -18,8 +18,8 @@ var settingsDrawer = document.getElementById('settingsDrawer');
 var settingsIcon = document.getElementById('settingsIcon');
 var isRotatingClockwise = true;
 var numImagesPerGroup = 10; // 每组图片数量，默认为 10
-var totalImages = 57; // 照片集 1 数量，默认为 57
-var totalImagesSecret = 16; // 照片集 2 数量，默认为 16
+var totalImages = 0; // 照片集 1 数量
+var totalImagesSecret = 0; // 照片集 2 数量
 var numberSelector2 = document.getElementById('numberSelector2');
 var numberSelector3 = document.getElementById('numberSelector3');
 
