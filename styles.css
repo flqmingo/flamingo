@@ -120,8 +120,8 @@ button:hover {
     position: absolute;
     left: 0px;
     top: 20px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border: none;
     cursor: pointer;
     z-index: 100;
@@ -134,8 +134,31 @@ button:hover {
 
 /* 设置按钮图标样式 */
 #settingsButton img {
-    max-width: 30px;
-    max-height: 30px;
+    max-width: 24px;
+    max-height: 24px;
+    object-fit: contain;
+}
+
+/* 音乐播放暂停按钮样式 */
+#musicControlButton {
+    position: absolute;
+    left: 40px; /* 根据设置按钮的宽度调整位置 */
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+/* 音乐播放暂停按钮图标样式 */
+#musicControlButton img {
+    max-width: 24px;
+    max-height: 24px;
     object-fit: contain;
 }
 

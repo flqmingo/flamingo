@@ -2,27 +2,33 @@ var currentGroup = 0;
 var totalGroups = 6;
 var totalGroupsForSecret = 0; // 用于存储展示 secret 文件夹照片的组数
 var isForTa = false;
-var forTaBtn = document.getElementById('forTaBtn');
 var rotationSpeed = 0.1;
 var requestId;
 var currentRotationY = 0;
-var audioForTa = document.getElementById('audioForTa');
-var audioForMe = document.getElementById('audioForMe');
-var volumeSlider = document.getElementById('volumeSlider');
 var rotationDirection = 1;
 var isRotationPaused = false;
 var enlargedImage = null;
 var originalTransforms = [];
-var settingsButton = document.getElementById('settingsButton');
-var settingsDrawer = document.getElementById('settingsDrawer');
-var settingsIcon = document.getElementById('settingsIcon');
 var isRotatingClockwise = true;
 var numImagesPerGroup = 10; // 每组图片数量，默认为 10
 var totalImages = 0; // 照片集 1 数量
 var totalImagesSecret = 0; // 照片集 2 数量
+
+var forTaBtn = document.getElementById('forTaBtn');
+var prevBtn = document.getElementById('prevBtn');
+var nextBtn = document.getElementById('nextBtn');
+var audioForTa = document.getElementById('audioForTa');
+var audioForMe = document.getElementById('audioForMe');
+var volumeSlider = document.getElementById('volumeSlider');
+var controlButton = document.getElementById('controlButton');
+var settingsButton = document.getElementById('settingsButton');
+var musicControlIcon = document.getElementById('musicControlIcon');
+var settingsDrawer = document.getElementById('settingsDrawer');
+var settingsIcon = document.getElementById('settingsIcon');
 var rotationSpeedSlider = document.getElementById('rotationSpeedSlider');
 var numberSelector2 = document.getElementById('numberSelector2');
 var numberSelector3 = document.getElementById('numberSelector3');
+var musicControlButton = document.getElementById('musicControlButton');
 
 // 获取指定文件夹中的图片数量
 function getImageCount(folder) {
@@ -83,7 +89,7 @@ function init() {
 
     document.onmousedown = function (e) {
         // 判断鼠标点击的元素是否为滑块或在抽屉栏内
-        if (e.target === volumeSlider || settingsDrawer.contains(e.target)) {
+        if (e.target === volumeSlider || settingsDrawer.contains(e.target) || controlButton.contains(e.target) || e.target === forTaBtn) {
             return;
         }
         cancelAnimationFrame(requestId);
@@ -134,8 +140,6 @@ function init() {
         document.body.style.perspective = 1000 + index + "px";
     })
 
-    var prevBtn = document.getElementById('prevBtn');
-    var nextBtn = document.getElementById('nextBtn');
     prevBtn.addEventListener('click', function () {
         cancelAnimationFrame(requestId);
         if (isForTa) {
@@ -228,6 +232,27 @@ function init() {
             settingsIcon.style.animation = 'rotateCounterclockwise 0.5s linear forwards';
         }
         isRotatingClockwise =!isRotatingClockwise;
+    });
+
+    // 音乐播放暂停按钮点击事件处理逻辑
+    musicControlButton.addEventListener('click', function () {
+        if (audioForTa.paused && audioForMe.paused) {
+            // 如果音乐暂停，播放音乐并切换图标为暂停图标
+            if (isForTa) {
+                audioForTa.play();
+            } else {
+                audioForMe.play();
+            }
+            musicControlIcon.src = "support_image/pause.png";
+        } else {
+            // 如果音乐播放，暂停音乐并切换图标为播放图标
+            if (isForTa) {
+                audioForTa.pause();
+            } else {
+                audioForMe.pause();
+            }
+            musicControlIcon.src = "support_image/play.png";
+        }
     });
 
     // 监听数字选择器的变化
@@ -347,6 +372,7 @@ function attemptAutoPlay() {
             // 自动播放失败，监听用户交互
             document.addEventListener('click', () => {
                 audioToPlay.play();
+                musicControlIcon.src = "support_image/pause.png";
             }, { once: true });
         });
     }
