@@ -12,7 +12,8 @@ body {
     display: flex;
     perspective: 1000px;
     transform-style: preserve-3d;
-    background-image: url(support_image/bg.png);
+    background-image: url('support_image/bg.png');
+    /* cursor: url('support_image/star.png') 16 19 , auto; */
     height: 100%;
     width: 100%;
     justify-content: center;
@@ -56,8 +57,9 @@ body {
     transition: transform 0.5s ease-in-out;
 }
 
-/* 鼠标悬停时图片样式 */
+/* 鼠标悬停图片样式 */
 #box>div:hover {
+    /* cursor: url('support_image/star.png') 16 19, auto; */
     box-shadow: 0 0 20px rgb(199, 255, 253);
     transform: scale(1.3) rotateY(0deg) translate3d(0, 0, 350px);
     z-index: 1;
@@ -88,7 +90,6 @@ button {
     font-size: 30px;
     border: none;
     padding: 10px 20px;
-    cursor: pointer;
     transition: background-color 0.3s;
     border-radius: 30px;
 }
@@ -96,6 +97,7 @@ button {
 /* 鼠标悬停时按钮样式 */
 button:hover {
     background-color: rgba(224, 224, 224, 0.8);
+    /* cursor: url('support_image/star.png') 16 19, auto; */
 }
 
 /* 上一张按钮样式 */
@@ -139,6 +141,10 @@ button:hover {
     object-fit: contain;
 }
 
+/* #settingsButton:hover {
+    cursor: url('support_image/star.png') 16 19, auto;
+} */
+
 /* 音乐播放暂停按钮样式 */
 #musicControlButton {
     position: absolute;
@@ -155,12 +161,17 @@ button:hover {
     align-items: center;
     overflow: hidden;
 }
+
 /* 音乐播放暂停按钮图标样式 */
 #musicControlButton img {
     max-width: 24px;
     max-height: 24px;
     object-fit: contain;
 }
+
+/* #musicControlButton:hover {
+    cursor: url('support_image/star.png') 16 19, auto;
+} */
 
 /* 设置按钮图片旋转动画 */
 @keyframes rotateClockwise {
